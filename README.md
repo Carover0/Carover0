@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @Carover0
-- 👀 I’m interested in python
+- 👀 I’m interested in Python and Excel
 - 📫 How to reach me https://t.me/Cvg_1995
 
 
