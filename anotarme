@@ -1,0 +1,32 @@
+@bot.message_handler(commands=['anotarme'])
+def elige(m):
+    try:
+        rec = f'\n\n ⚡️<a href="https://t.me/BRUTUS_energy_bot"><b>Brutus Energy Bot</b></a> Si estas en deficit de energia o banda ancha para realizar tus operaciones tenemos la solucion!'
+        uran = f'☢️ <a href="https://sunpump.meme/token/TUXRDyouTGBnCyaDBsaL8XQ5zAfT2qYuaP"><b>Uranium $U238</b></a> Compra y acumula tanto Uranio hasta que te sientas un musulman loco construyendo una bomba atomica'
+        xf = f'Auspician el siguiente sorteo:\n\n {rec}'
+        tgs  = m.chat.username
+        import sqlite3      #hecho con 💜 por trXXXgirl 🐍☢️
+        from datetime import datetime
+        consor = sqlite3.connect("C:\dbases\drifa.db")
+        cursorsor = consor.cursor()
+        cursor2 = consor.cursor()
+        cant = "SELECT COUNT(*) FROM sorteo"
+        cdatos = cursor2.execute(cant)
+        cuenta = cursor2.fetchone()[0]
+        cuenta = cuenta + 1
+        no_duplicados = f"SELECT * FROM sorteo WHERE usuario='{tgs}'"
+        cursor = consor.cursor()    
+        cursor.execute(no_duplicados)
+        lee = cursor.fetchall()
+        for row in lee:     #  🔥 Solo permitimos una entrada por usuario para garantizar transparencia
+            if row[1] == tgs:
+                bot.reply_to(m, "🚫 Este usuario ya esta paricipando. <b>\n\nSolo se permite una entrada por persona!</b>"  , parse_mode="HTML")                    
+            else:
+                GrabaResultadosor = f"INSERT INTO sorteo(orden, usuario) VALUES ('{cuenta}', '{tgs}')" 
+                cursorsor.execute(GrabaResultadosor)
+                consor.commit()
+                consor.close
+                bot.reply_to(m,f"🍀Bienvenido sos uno de los <b> {cuenta} </b>usuarios que estan participando:\n\n♦️ <b>Tu nombre de usuario para participar: {tgs}\n\n{xf}\n\n</b>🍀<b>Suerte!!</b>🍀" , parse_mode="html")
+    except Exception as e:
+        bot.reply_to(m,f"⚠️ Usa este comando por privado, No estas particiapando")
+        #bot.reply_to(m, e  , parse_mode="HTML")
