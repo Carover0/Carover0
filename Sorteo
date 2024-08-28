@@ -1,0 +1,41 @@
+@bot.message_handler(commands=['sortear'])
+def sortea(m):
+    try:   
+        import random #hecho con 💜 por trXXXgirl 🐍☢️
+        import sqlite3
+        from datetime import datetime
+        ya = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        atext = m.text.split(' ')
+        clave = atext[1]
+        con = sqlite3.connect("C:\dbases\drifa.db")
+        cant = "SELECT COUNT(*) FROM registro"
+        cursor2 = con.cursor()
+        cdatos = cursor2.execute(cant)
+        cuenta = cursor2.fetchone()[0]
+        if clave == "caro123":
+            nrosorteo = random.randint(1, cuenta) # 🔥 Elegir un numero aleatorio entre la cantidad de anotados 
+            cursor = con.cursor()    
+            ganadores = f"SELECT * FROM sorteo WHERE orden='{nrosorteo}'" 
+            cursor.execute(ganadores)
+            lee = cursor.fetchall()
+            nroals = random.randint(1, 4)
+            wbss = f"https://cvg1995.000webhostapp.com/g{nroals}.jpeg"
+            if not lee:
+                bot.reply_to(m,"🥲 No hay ganadores")
+            else:
+                for row in lee:
+                    gndr = "@" + row[1]  
+                    conx = sqlite3.connect("C:\dbases\drifa.db")
+                    cursorx = conx.cursor()    
+                    s_n = cuenta + 1
+                    s_n = str(s_n)
+                    s_n = "#" + s_n
+                    reg_con = f"INSERT INTO registro(num, user, fecha) VALUES ('{s_n}', '{gndr}', '{ya}')"
+                    bot.reply_to(m,f"{wbss}\n\n🥳El usuario ganador es: <b>{gndr}</b>\n\n🎉🎉 <b>Felicitaciones!!</b> 🎉🎉\n\nEl sorteo {s_n} ganador {gndr} fecha {ya} fue registrado en la base de datos del bot" , parse_mode="html") 
+                    cursorx.execute(reg_con)
+                    conx.commit()
+                    conx.close
+        else:
+            bot.reply_to(m, f"⚠️ Error en la clave")                
+    except Exception as e:
+        bot.reply_to(m,e)
