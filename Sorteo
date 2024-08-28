@@ -5,6 +5,8 @@ def sortea(m):
         import sqlite3
         from datetime import datetime
         ya = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        fcorta = datetime.now().strftime('%Y-%m-%d')
+        hcorta = datetime.now().strftime('%H:%M:%S')
         atext = m.text.split(' ')
         clave = atext[1]
         con = sqlite3.connect("C:\dbases\drifa.db")
@@ -24,14 +26,14 @@ def sortea(m):
                 bot.reply_to(m,"🥲 No hay ganadores")
             else:
                 for row in lee:
-                    gndr = "@" + row[1]  
+                    gndr = "@" + row[1]     
                     conx = sqlite3.connect("C:\dbases\drifa.db")
                     cursorx = conx.cursor()    
                     s_n = cuenta + 1
                     s_n = str(s_n)
                     s_n = "#" + s_n
                     reg_con = f"INSERT INTO registro(num, user, fecha) VALUES ('{s_n}', '{gndr}', '{ya}')"
-                    bot.reply_to(m,f"{wbss}\n\n🥳El usuario ganador es: <b>{gndr}</b>\n\n🎉🎉 <b>Felicitaciones!!</b> 🎉🎉\n\nEl sorteo {s_n} ganador {gndr} fecha {ya} fue registrado en la base de datos del bot" , parse_mode="html") 
+                    bot.reply_to(m,f"{wbss}\n\n🍀 Sorteo: <b>{s_n}</b>\n📅 Fecha: <b>{fcorta}</b>\n🕘 Hora: <b>{hcorta}</b>\n\n💰 El usuario ganador es: <b>{gndr}</b>\n\n🎉🎉 <b>Felicitaciones!!</b> 🎉🎉\n\nEl sorteo numero <b>{s_n}</b> ganador <b>{gndr}</b> fecha <b>{ya}</b> fue registrado en la base de datos del bot" , parse_mode="html") 
                     cursorx.execute(reg_con)
                     conx.commit()
                     conx.close
