@@ -1,9 +1,6 @@
 @bot.message_handler(commands=['anotarme'])
 def elige(m):
     try:
-        rec = f'\n\n ⚡️<a href="https://t.me/BRUTUS_energy_bot"><b>Brutus Energy Bot</b></a> Si estas en deficit de energia o banda ancha para realizar tus operaciones tenemos la solucion!'
-        uran = f'☢️ <a href="https://sunpump.meme/token/TUXRDyouTGBnCyaDBsaL8XQ5zAfT2qYuaP"><b>Uranium $U238</b></a> Compra y acumula tanto Uranio hasta que te sientas un musulman loco construyendo una bomba atomica'
-        xf = f'Auspician el siguiente sorteo:\n\n {rec}'
         tgs  = m.chat.username
         import sqlite3      #hecho con 💜 por trXXXgirl 🐍☢️
         from datetime import datetime
@@ -26,7 +23,7 @@ def elige(m):
                 cursorsor.execute(GrabaResultadosor)
                 consor.commit()
                 consor.close
-                bot.reply_to(m,f"🍀Bienvenido sos uno de los <b> {cuenta} </b>usuarios que estan participando:\n\n♦️ <b>Tu nombre de usuario para participar: {tgs}\n\n{xf}\n\n</b>🍀<b>Suerte!!</b>🍀" , parse_mode="html")
+                bot.reply_to(m,f"🍀Bienvenido sos uno de los <b> {cuenta} </b>usuarios que estan participando:\n\n♦️ <b>Tu nombre de usuario para participar: {tgs}\n\n</b>🍀<b>Suerte!!</b>🍀" , parse_mode="html")
     except Exception as e:
         bot.reply_to(m,f"⚠️ Usa este comando por privado, No estas particiapando")
         #bot.reply_to(m, e  , parse_mode="HTML")
