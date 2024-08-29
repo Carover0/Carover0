@@ -18,12 +18,12 @@ def elige(m):
         for row in lee:     #  🔥 Solo permitimos una entrada por usuario para garantizar transparencia
             if row[1] == tgs:
                 bot.reply_to(m, "🚫 Este usuario ya esta paricipando. <b>\n\nSolo se permite una entrada por persona!</b>"  , parse_mode="HTML")                    
-            else:
-                GrabaResultadosor = f"INSERT INTO sorteo(orden, usuario) VALUES ('{cuenta}', '{tgs}')" 
-                cursorsor.execute(GrabaResultadosor)
-                consor.commit()
-                consor.close
-                bot.reply_to(m,f"🍀Bienvenido sos uno de los <b> {cuenta} </b>usuarios que estan participando:\n\n♦️ <b>Tu nombre de usuario para participar: {tgs}\n\n</b>🍀<b>Suerte!!</b>🍀" , parse_mode="html")
+                return
+        registrar = f"INSERT INTO sorteo(orden, usuario) VALUES ('{cuenta}', '{tgs}')" 
+        cursorsor.execute(registrar)
+        consor.commit()
+        consor.close
+        bot.reply_to(m,f"🍀Bienvenido sos uno de los <b> {cuenta} </b>usuarios que estan participando:\n\n♦️ <b>Tu nombre de usuario para participar: {tgs}</b>\n\n🍀<b>Suerte!!</b>🍀" , parse_mode="html")
     except Exception as e:
         bot.reply_to(m,f"⚠️ Usa este comando por privado, No estas particiapando")
-        #bot.reply_to(m, e  , parse_mode="HTML")
+        bot.reply_to(m, e  , parse_mode="HTML")
