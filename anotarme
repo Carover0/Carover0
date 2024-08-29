@@ -23,7 +23,7 @@ def elige(m):
         cursorsor.execute(registrar)
         consor.commit()
         consor.close
-        bot.reply_to(m,f"🍀Bienvenido sos uno de los <b> {cuenta} </b>usuarios que estan participando:\n\n♦️ <b>Tu nombre de usuario para participar: {tgs}</b>\n\n🍀<b>Suerte!!</b>🍀" , parse_mode="html")
+        bot.reply_to(m,f"🍀Bienvenido!\n\n♦️ Sos uno de los<b> {cuenta} </b>usuarios que estan participando y tu nombre de usuario para participar es<b> {tgs}</b>\n\n🍀<b>Suerte!!</b>🍀" , parse_mode="html")
     except Exception as e:
         bot.reply_to(m,f"⚠️ Usa este comando por privado, No estas particiapando")
         bot.reply_to(m, e  , parse_mode="HTML")
