@@ -65,7 +65,7 @@ def rifa(m):
 def elige(m):
     try:
         tgs  = m.chat.username
-        import sqlite3      #hecho con 💜 por trXXXgirl 🐍☢️
+        import sqlite3     
         from datetime import datetime
         consor = sqlite3.connect("C:\dbases\drifa.db")
         cursorsor = consor.cursor()
@@ -124,7 +124,7 @@ def eligeen(m):
 @bot.message_handler(commands=['sortear'])
 def sortea(m):
     try:   
-        import random #hecho con 💜 por trXXXgirl 🐍☢️
+        import random 
         import sqlite3
         from datetime import datetime
         ya = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
