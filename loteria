@@ -31,7 +31,7 @@ def rifa(m):
     cant = "SELECT COUNT(*) FROM sorteo"
     cdatos = cursor2.execute(cant)
     cuenta = cursor2.fetchone()[0]
-    pv = f' 💬 <a href="https://t.me/winkbot_bot"><b>En privado con el bot</b></a>'
+    pv = f' 💬 <a href="https://t.me/lotterydraw_bot"><b>En privado con el bot</b></a>'
     wbs = f"https://cvg1995.000webhostapp.com/juegos/n2.jpeg"
     jue = f"{wbs} \n\n🔶 Anotate en el sorteo organizado por {organizador} siguiendo estos simples pasos\n\n💰El premio para el ganador es: {premio}\n\n👉 Usa el comando <b>/anotarme</b> para participar\n\nHasta el momento paticipan <b>{cuenta} usuarios</b>.\nActualizado: <b>{ult_mods}</b>\n\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 <b>translate /lottery </b>"
     bot.reply_to(m,f"" + jue , parse_mode="HTML")
@@ -56,7 +56,7 @@ def rifa(m):
     cant = "SELECT COUNT(*) FROM sorteo"
     cdatos = cursor2.execute(cant)
     cuenta = cursor2.fetchone()[0]
-    pv = f' 💬 <a href="https://t.me/winkbot_bot"><b>En privado con el bot</b></a>'
+    pv = f' 💬 <a href="https://t.me/lotterydraw_bot"><b>En privado con el bot</b></a>'
     wbs = f"https://cvg1995.000webhostapp.com/juegos/n2.jpeg"
     jue = f"{wbs} \n\n🔶 Sign up for the giveaway organized by {organizador} following these simple steps\n\n💰 The prize for the winner is: {premio}\n\n👉 Use the command <b>/enter</b> to participate.\n\nSo far <b>{cuenta} users</b>.\nUpdated: <b>{ult_mods}</b>"
     bot.reply_to(m,f"" + jue , parse_mode="HTML")    
