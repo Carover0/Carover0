@@ -25,11 +25,11 @@ def rifa(m):
     organizador = f"<b>Brutus Finance</b>"
     premio = f"<b>Energia en la red TRON</b>"
     #c_base = r"base_ttx.db"
-    um = os.path.getmtime('C:\dbases\drifa.db')
+    um = os.path.getmtime('C:\dbases\dloteria.db')
     mu_ = time.ctime(um)
     mu = time.strptime(mu_)
     ult_mods = time.strftime("%A, %B %d, %Y %H:%M:%S", mu)
-    con = sqlite3.connect("C:\dbases\drifa.db")
+    con = sqlite3.connect("C:\dbases\dloteria.db")
     cursor2 = con.cursor()
     cant = "SELECT COUNT(*) FROM sorteo"
     cdatos = cursor2.execute(cant)
@@ -50,11 +50,11 @@ def rifa(m):
     organizador = f"<b>Brutus Finance</b>"
     premio = f"<b>energy in the TRON ​​network</b>"
     #c_base = r"base_ttx.db"
-    um = os.path.getmtime('C:\dbases\drifa.db')
+    um = os.path.getmtime('C:\dbases\dloteria.db')
     mu_ = time.ctime(um)
     mu = time.strptime(mu_)
     ult_mods = time.strftime("%A, %B %d, %Y %H:%M:%S", mu)
-    con = sqlite3.connect("C:\dbases\drifa.db")
+    con = sqlite3.connect("C:\dbases\dloteria.db")
     cursor2 = con.cursor()
     cant = "SELECT COUNT(*) FROM sorteo"
     cdatos = cursor2.execute(cant)
@@ -68,9 +68,9 @@ def rifa(m):
 def elige(m):
     try:
         tgs  = m.chat.username
-        import sqlite3     
+        import sqlite3      #hecho con 💜 por trXXXgirl 🐍☢️
         from datetime import datetime
-        consor = sqlite3.connect("C:\dbases\drifa.db")
+        consor = sqlite3.connect("C:\dbases\dloteria.db")
         cursorsor = consor.cursor()
         cursor2 = consor.cursor()
         cant = "SELECT COUNT(*) FROM sorteo"
@@ -100,7 +100,7 @@ def eligeen(m):
         tgs  = m.chat.username
         import sqlite3
         from datetime import datetime
-        consor = sqlite3.connect("C:\dbases\drifa.db")
+        consor = sqlite3.connect("C:\dbases\dloteria.db")
         cursorsor = consor.cursor()
         cursor2 = consor.cursor()
         cant = "SELECT COUNT(*) FROM sorteo"
@@ -127,7 +127,7 @@ def eligeen(m):
 @bot.message_handler(commands=['sortear'])
 def sortea(m):
     try:   
-        import random 
+        import random #hecho con 💜 por trXXXgirl 🐍☢️
         import sqlite3
         from datetime import datetime
         ya = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -135,7 +135,7 @@ def sortea(m):
         hcorta = datetime.now().strftime('%H:%M:%S')
         atext = m.text.split(' ')
         clave = atext[1]
-        con = sqlite3.connect("C:\dbases\drifa.db")
+        con = sqlite3.connect("C:\dbases\dloteria.db")
         cant = "SELECT COUNT(*) FROM sorteo"
         cursor2 = con.cursor()
         cdatos = cursor2.execute(cant)
@@ -156,7 +156,7 @@ def sortea(m):
             else:
                 for row in lee:
                     gndr = "@" + row[1]     
-                    conx = sqlite3.connect("C:\dbases\drifa.db")
+                    conx = sqlite3.connect("C:\dbases\dloteria.db")
                     cursorx = conx.cursor()    
                     s_n = cuenta_reg + 1
                     s_n = str(s_n)
@@ -178,4 +178,4 @@ def xxx(m):
     bot.reply_to(m,"comando erroneo!")
 
 if __name__ == "__main__":
-    bot.polling(none_stop=True)       
+    bot.polling(none_stop=True)        
