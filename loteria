@@ -1,0 +1,178 @@
+print("⚠️ sorteos ejecutando!")
+#hecho con 💜 por trXXXgirl 🐍☢️
+import telebot
+token = 'clave_privada'
+bot = telebot.TeleBot(token)
+
+@bot.message_handler(commands=['start'])
+def st(m):
+    var1 = f"🇪🇸 /loteria Participa en un sorteo con tu nombre de usuario de telegram"
+    var2 = f"🏴󠁧󠁢󠁥󠁮󠁧󠁿/lottery Participate in a raffle with your Telegram username"
+    jue = f"https://cvg1995.000webhostapp.com/juegos/e8.jpeg \n{var1}\n\n{var2}"
+    bot.reply_to(m,f"" + jue , parse_mode="HTML")
+
+#sorteos por usuario
+@bot.message_handler(commands=['loteria'])
+def rifa(m):
+    import sqlite3
+    from datetime import datetime
+    import time
+    import os
+    import random
+    organizador = f"<b>Brutus Finance</b>"
+    premio = f"<b>Energia en la red TRON</b>"
+    #c_base = r"base_ttx.db"
+    um = os.path.getmtime('C:\dbases\drifa.db')
+    mu_ = time.ctime(um)
+    mu = time.strptime(mu_)
+    ult_mods = time.strftime("%A, %B %d, %Y %H:%M:%S", mu)
+    con = sqlite3.connect("C:\dbases\drifa.db")
+    cursor2 = con.cursor()
+    cant = "SELECT COUNT(*) FROM sorteo"
+    cdatos = cursor2.execute(cant)
+    cuenta = cursor2.fetchone()[0]
+    pv = f' 💬 <a href="https://t.me/winkbot_bot"><b>En privado con el bot</b></a>'
+    wbs = f"https://cvg1995.000webhostapp.com/juegos/n2.jpeg"
+    jue = f"{wbs} \n\n🔶 Anotate en el sorteo organizado por {organizador} siguiendo estos simples pasos\n\n💰El premio para el ganador es: {premio}\n\n👉 Usa el comando <b>/anotarme</b> para participar\n\nHasta el momento paticipan <b>{cuenta} usuarios</b>.\nActualizado: <b>{ult_mods}</b>\n\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 <b>translate /lottery </b>"
+    bot.reply_to(m,f"" + jue , parse_mode="HTML")
+
+#sorteos por usuario
+@bot.message_handler(commands=['lottery'])
+def rifa(m):
+    import sqlite3
+    from datetime import datetime
+    import time
+    import os
+    import random
+    organizador = f"<b>Brutus Finance</b>"
+    premio = f"<b>energy in the TRON ​​network</b>"
+    #c_base = r"base_ttx.db"
+    um = os.path.getmtime('C:\dbases\drifa.db')
+    mu_ = time.ctime(um)
+    mu = time.strptime(mu_)
+    ult_mods = time.strftime("%A, %B %d, %Y %H:%M:%S", mu)
+    con = sqlite3.connect("C:\dbases\drifa.db")
+    cursor2 = con.cursor()
+    cant = "SELECT COUNT(*) FROM sorteo"
+    cdatos = cursor2.execute(cant)
+    cuenta = cursor2.fetchone()[0]
+    pv = f' 💬 <a href="https://t.me/winkbot_bot"><b>En privado con el bot</b></a>'
+    wbs = f"https://cvg1995.000webhostapp.com/juegos/n2.jpeg"
+    jue = f"{wbs} \n\n🔶 Sign up for the giveaway organized by {organizador} following these simple steps\n\n💰 The prize for the winner is: {premio}\n\n👉 Use the command <b>/enter</b> to participate.\n\nSo far <b>{cuenta} users</b>.\nUpdated: <b>{ult_mods}</b>"
+    bot.reply_to(m,f"" + jue , parse_mode="HTML")    
+
+@bot.message_handler(commands=['anotarme'])
+def elige(m):
+    try:
+        tgs  = m.chat.username
+        import sqlite3      #hecho con 💜 por trXXXgirl 🐍☢️
+        from datetime import datetime
+        consor = sqlite3.connect("C:\dbases\drifa.db")
+        cursorsor = consor.cursor()
+        cursor2 = consor.cursor()
+        cant = "SELECT COUNT(*) FROM sorteo"
+        cdatos = cursor2.execute(cant)
+        cuenta = cursor2.fetchone()[0]
+        cuenta = cuenta + 1
+        no_duplicados = f"SELECT * FROM sorteo WHERE usuario='{tgs}'"
+        cursor = consor.cursor()    
+        cursor.execute(no_duplicados)
+        lee = cursor.fetchall()
+        for row in lee:     #  🔥 Solo permitimos una entrada por usuario para garantizar transparencia
+            if row[1] == tgs:
+                bot.reply_to(m, "🚫 Este usuario ya esta paricipando. <b>\n\nSolo se permite una entrada por persona!</b>"  , parse_mode="HTML")                    
+                return
+        registrar = f"INSERT INTO sorteo(orden, usuario) VALUES ('{cuenta}', '{tgs}')" 
+        cursorsor.execute(registrar)
+        consor.commit()
+        consor.close
+        bot.reply_to(m,f"🍀Bienvenido!\n\n♦️ Sos uno de los<b> {cuenta} </b>usuarios que estan participando y tu nombre de usuario para participar es<b> {tgs}</b>\n\n🍀<b>Suerte!!</b>🍀" , parse_mode="html")
+    except Exception as e:
+        bot.reply_to(m,f"⚠️ Usa este comando por privado, No estas particiapando")
+        bot.reply_to(m, e  , parse_mode="HTML")
+
+@bot.message_handler(commands=['enter'])
+def eligeen(m):
+    try:
+        tgs  = m.chat.username
+        import sqlite3
+        from datetime import datetime
+        consor = sqlite3.connect("C:\dbases\drifa.db")
+        cursorsor = consor.cursor()
+        cursor2 = consor.cursor()
+        cant = "SELECT COUNT(*) FROM sorteo"
+        cdatos = cursor2.execute(cant)
+        cuenta = cursor2.fetchone()[0]
+        cuenta = cuenta + 1
+        no_duplicados = f"SELECT * FROM sorteo WHERE usuario='{tgs}'"
+        cursor = consor.cursor()    
+        cursor.execute(no_duplicados)
+        lee = cursor.fetchall()
+        for row in lee:
+            if row[1] == tgs:
+                bot.reply_to(m, "🚫 This user is already participating. <b>\n\nOnly one entry per person is allowed!</b>"  , parse_mode="HTML")                    
+                return
+        registrar = f"INSERT INTO sorteo(orden, usuario) VALUES ('{cuenta}', '{tgs}')" 
+        cursorsor.execute(registrar)
+        consor.commit()
+        consor.close
+        bot.reply_to(m,f"🍀Welcome!\n\n♦️ You are one of the<b> {cuenta} </b>users who are participating and your username to participate is <b>{tgs}\n\n</b>🍀<b>Good luck!!</b>🍀" , parse_mode="html")
+    except Exception as e:
+        bot.reply_to(m,f"⚠️ Usa este comando por privado, No estas particiapando")
+        bot.reply_to(m, e  , parse_mode="HTML")
+
+@bot.message_handler(commands=['sortear'])
+def sortea(m):
+    try:   
+        import random #hecho con 💜 por trXXXgirl 🐍☢️
+        import sqlite3
+        from datetime import datetime
+        ya = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        fcorta = datetime.now().strftime('%Y-%m-%d')
+        hcorta = datetime.now().strftime('%H:%M:%S')
+        atext = m.text.split(' ')
+        clave = atext[1]
+        con = sqlite3.connect("C:\dbases\drifa.db")
+        cant = "SELECT COUNT(*) FROM sorteo"
+        cursor2 = con.cursor()
+        cdatos = cursor2.execute(cant)
+        cuenta = cursor2.fetchone()[0]
+        cant_reg = "SELECT COUNT(*) FROM registro"
+        cursor_reg = con.cursor()
+        cdatos_reg = cursor_reg.execute(cant_reg)
+        cuenta_reg = cursor_reg.fetchone()[0]
+        if clave == "caro123":
+            nrosorteo = random.randint(1, cuenta) # 🔥 Elegir un numero aleatorio entre la cantidad de anotados 
+            cursor = con.cursor()    
+            ganadores = f"SELECT * FROM sorteo WHERE orden='{nrosorteo}'" 
+            cursor.execute(ganadores)
+            lee = cursor.fetchall()
+            wbss = f"https://cvg1995.000webhostapp.com/juegos/g2.jpeg"
+            if not lee:
+                bot.reply_to(m,f"🥲 No hay ganadores")
+            else:
+                for row in lee:
+                    gndr = "@" + row[1]     
+                    conx = sqlite3.connect("C:\dbases\drifa.db")
+                    cursorx = conx.cursor()    
+                    s_n = cuenta_reg + 1
+                    s_n = str(s_n)
+                    s_n = "#" + s_n
+                    reg_con = f"INSERT INTO registro(num, user, fecha) VALUES ('{s_n}', '{gndr}', '{ya}')"
+                    bot.reply_to(m,f"{wbss}\n\n🍀 Sorteo: <b>{s_n}</b>\n📅 Fecha: <b>{fcorta}</b>\n🕘 Hora: <b>{hcorta}</b>\n\n💰 El usuario ganador es: <b>{gndr}</b>\n\n🎉🎉 <b>Felicitaciones!!</b> 🎉🎉\n\nEl sorteo numero <b>{s_n}</b> ganador <b>{gndr}</b> fecha <b>{ya}</b> fue registrado en la base de datos del bot" , parse_mode="html") 
+                    cursorx.execute(reg_con)
+                    conx.commit()
+                    conx.close
+        else:
+            bot.reply_to(m, f"⚠️ Error en la clave")                
+    except Exception as e:
+        bot.reply_to(m,e)
+
+@bot.message_handler(func=lambda m:True)
+
+@bot.message_handler(commands=[''])
+def xxx(m):
+    bot.reply_to(m,"comando erroneo!")
+
+if __name__ == "__main__":
+    bot.polling(none_stop=True)        
