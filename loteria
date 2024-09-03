@@ -3,7 +3,7 @@ print("⚠️ sorteos ejecutando!")
 #hecho con 💜 por trXXXgirl 🐍☢️
 
 import telebot
-token = '7480188723:AAFFHJ-jwr1ZUHuM0iTnsao-l5ZY9sztQVk'
+token = 'TELEGRAM_TOKEN'
 bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start'])
